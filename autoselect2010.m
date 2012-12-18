@@ -1,4 +1,4 @@
-%model_class = read_PSBCla('coarse1Train.cla');
+model_class = read_PSBCla('coarse1Train.cla');
 class_number = length(model_class);
 
 candiate_class_number = 10;
@@ -7,9 +7,31 @@ feature_number = 70;
 
 for m = 1:class_number
     
-    
-    
     model_number = length(model_class(m).model_index);
+    if(model_number == 0)
+        continue;
+    end
+    
+    choosed_other_class_index = randperm(class_number);
+    choosed_other_class_index(find...
+    (choosed_other_class_index == m)) = [];
+    temp_length = length(choosed_other_class_index);
+    for n = temp_length + 1:model_number
+        temp = randi([1,length(choosed_other_class_index)]);
+        choosed_other_class_index(n) = choosed_other_class_index(temp);
+    end
+    for n = 1:class_number
+        if length(model_class(n).model_index) == 0
+            choosed_other_class_index(find...
+                (choosed_other_class_index == n)) = [];
+        end
+    end
+    for n = 1:length(choosed_other_class_index)
+            other_class_index = choosed_other_class_index(n);
+            choosed_other_class_model_index(n) = randi([1,length(model_class(other_class_index).model_index)]);
+    end
+    
+    
     for n = 1:model_number
         cd(['m',num2str(model_class(m).model_index(n))]);
         feature_file = dir(fullfile('./','*chosed*.csv'));
@@ -67,7 +89,7 @@ for m = 1:class_number
         for k = 1:length(file_list)
             current_model_feature(k,:) = csvread(file_list(k).name);
         end
-        sample_same_class = floor(class_number/2);
+        sample_same_class = class_number - 1;
         %sample_same_class = 1;
         sample_other_class = sample_same_class;
         choosed_same_class_model_index = randperm(model_number);
@@ -102,20 +124,22 @@ for m = 1:class_number
         end
         
         
-        choosed_other_class_index = randperm(class_number);
-        choosed_other_class_index(find...
-            (choosed_other_class_index == m)) = [];
-        for k = 1:class_number
-            if length(model_class(k).model_index) == 0
-                choosed_other_class_index(find...
-                    (choosed_other_class_index == k)) = [];
-            end
-        end
+%         choosed_other_class_index = randperm(class_number);
+%         choosed_other_class_index(find...
+%             (choosed_other_class_index == m)) = [];
+%         for k = 1:class_number
+%             if length(model_class(k).model_index) == 0
+%                 choosed_other_class_index(find...
+%                     (choosed_other_class_index == k)) = [];
+%             end
+%         end
         
         for k = 1:sample_other_class
+%             other_class_index = choosed_other_class_index(k);
+%             choosed_other_class_model_index = randi(length(model_class(other_class_index).model_index));
+%             cd(['m',num2str(model_class(other_class_index).model_index(choosed_other_class_model_index))]);
             other_class_index = choosed_other_class_index(k);
-            choosed_other_class_model_index = randi(length(model_class(other_class_index).model_index));
-            cd(['m',num2str(model_class(other_class_index).model_index(choosed_other_class_model_index))]);
+            cd(['m',num2str(model_class(other_class_index).model_index(choosed_other_class_model_index(k)))]);
             feature_file = dir(fullfile('./','*chosed*.csv'));
             if(length(feature_file) < candiate_class_number)
                 preprocess;
@@ -165,7 +189,7 @@ for m = 1:class_number
                 weak_learner = tree_node_w(3); % pass the number of tree splits to the constructor 
                 [RLearners RWeights] = RealAdaBoost(weak_learner, TrainData, TrainLabels, MaxIter);
                 ResultR = sign(Classify(RLearners, RWeights, ControlData));
-                ErrorR(k)  = ErrorR(k) + sum(ControlLabels ~= ResultR) / length(ControlLabels)
+                ErrorR(k)  = ErrorR(k) + sum(ControlLabels ~= ResultR) / length(ControlLabels);
             end           
         end
         [c,pos]=sort(ErrorR);
