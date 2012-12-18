@@ -89,7 +89,7 @@ for m = 1:class_number
         for k = 1:length(file_list)
             current_model_feature(k,:) = csvread(file_list(k).name);
         end
-        sample_same_class = class_number - 1;
+        sample_same_class = model_number - 1;
         %sample_same_class = 1;
         sample_other_class = sample_same_class;
         choosed_same_class_model_index = randperm(model_number);
