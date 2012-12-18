@@ -1,0 +1,96 @@
+BODY,PRE,TABLE,TH,TD,P,INPUT,TEXTAREA,SELECT {font-family:宋体; FONT-SIZE: 12px;}
+A {TEXT-DECORATION: none;}
+A:HOVER {COLOR: #ff0000;}
+TABLE.BODY {BORDER: 1px solid; BORDER-COLOR: e0e0e0;}
+FONT.c30 {COLOR: 000000;}
+FONT.c31 {COLOR: e00000;}
+FONT.c32 {COLOR: 008000;}
+FONT.c33 {COLOR: 808000;}
+FONT.c34 {COLOR: 0000ff;}
+FONT.c35 {COLOR: d000d0;}
+FONT.c36 {COLOR: 33a0a0;}
+FONT.c37 {COLOR: 000000;}
+FONT.c80 {font-size: 24px;}
+
+/* added by Net begin~~ http://bianbian.org */
+div {margin:0; padding:0;}
+.hide {display:none}
+.hand {cursor:pointer}
+A.line {TEXT-DECORATION: underline}
+.text {height:18px;width:70px;border:1px #404040 solid;}
+.button {padding-left:5px; padding-right:5px; height:21px; color:black; background-image:url("/download/images/button_bg.gif"); border:1px solid #858585; font-size:12px;}
+BODY.left {margin-left: 0px; margin-top: 6px; margin-right: 0px; margin-bottom: 0px;}
+FONT.c40 {BACKGROUND-COLOR: ffffff;}
+FONT.c41 {BACKGROUND-COLOR: FDE6E6;}
+FONT.c42 {BACKGROUND-COLOR: E7FAE7;}
+FONT.c43 {BACKGROUND-COLOR: FAFADC;}
+FONT.c44 {BACKGROUND-COLOR: E3EEFA;}
+FONT.c45 {BACKGROUND-COLOR: FAE7FA;}
+FONT.c46 {BACKGROUND-COLOR: E0F6F6;}
+FONT.c47 {BACKGROUND-COLOR: ffffff;}
+TABLE.main {BORDER: 2px solid; BORDER-COLOR: D0F0C0;}
+TABLE.post {BORDER: 2px solid; BORDER-COLOR: d8d8d8; BACKGROUND-COLOR:f0f0f0}
+
+/* 属性提示框 */
+.cPopText {font-family: Tahoma, Verdana; background-color: #FFFFCC; border: 1px #000000 solid; font-size: 12px; padding-right: 4px; padding-left: 4px; line-height: 18px; padding-top: 2px; padding-bottom: 2px; visibility: hidden; opacity:0.8;filter: Alpha(Opacity=80)}
+
+ /* 模拟对话框 */
+#dialogBox {
+	z-index:1002; position:absolute; display:none;
+	margin:0 auto; background:#F3F8FE; border:1px solid #333; margin:0 auto;
+}
+#dialogBoxBox {
+	display:table; /*FF*/
+	width: 400px;
+}
+ /* 标题栏 */
+#dialogBoxHead {
+	display:table-row;
+	cursor:move; background:#F3F8FE url(/images/dialog_icon.gif) no-repeat 20px 10px; height:57px; -moz-user-select:none;
+	width: expression(this.nextSibling.offsetWidth); /*IE:根据内容调整Head宽度*/
+}
+ /* close按钮 */
+#dialogBoxHead span {cursor:pointer; float:right; margin:15px 20px; background: url(/images/dialog_close.gif) no-repeat; width:50px; height:20px;}
+#dialogBoxTitle {font-size:14px; font-weight:normal; float:left; color:#696969; padding:20px 0 0 55px;}
+ /* 内容wrap */
+#dialogBoxWrap {
+	height: auto; margin:0 auto; padding:0px 5px 5px 5px;
+	display:table-row; /*FF*/
+	height:100px;
+}
+#dialogBoxContent {
+	display: table-cell; vertical-align: middle; /*FF垂直居中*/
+	min-height:100px; /*FF*/
+	_height: 100px; /*IE6:_height*/
+	padding-top: expression(this.offsetHeight <= 100 ? this.offsetHeight / 2 : 0); /*IE垂直居中*/
+	margin: 0 auto; background:#FFF; border: 1px dotted #aaa; text-align: center;
+}
+ /* 遮挡 */
+#backBox {z-index:1001; position:absolute; left:0; top:0; display:none; opacity:0.2; filter:alpha(opacity=20); background:#aaa;}
+
+/* Pretty printing styles. Used with prettify.js. */
+.str { color: #080; }
+.kwd { color: #008; font-weight: bold; }
+.com { color: #800; }
+.typ { color: #606; font-weight: bold; }
+.lit { color: #066; }
+.pun { color: #660; }
+.pln { color: #000; }
+.tag { color: #008; font-weight: bold; }
+.atn { color: #606; }
+.atv { color: #080; }
+.dec { color: #606; }
+pre.prettyprint { font-family:Courier New,Fixdays,宋体; font-size: 14px; margin: 0 20px 0 20px; padding: 2px; border: 1px solid #ccc; }
+
+@media print {
+  .str { color: #060; }
+  .kwd { color: #006; font-weight: bold; }
+  .com { color: #600; font-style: italic; }
+  .typ { color: #404; font-weight: bold; }
+  .lit { color: #044; }
+  .pun { color: #440; }
+  .pln { color: #000; }
+  .tag { color: #006; font-weight: bold; }
+  .atn { color: #404; }
+  .atv { color: #060; }
+}

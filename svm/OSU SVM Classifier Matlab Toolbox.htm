@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0036)http://www.ece.osu.edu/~maj/osu_svm/ -->
+<HTML><HEAD><TITLE>OSU SVM Classifier Matlab Toolbox</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META http-equiv=Content-Language content=en-us>
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR>
+<META content=FrontPage.Editor.Document name=ProgId></HEAD>
+<BODY><B><FONT size=+2>OSU SVM Classifier Matlab Toolbox (ver 3.00)</FONT></B> 
+<P><B><FONT size=+1>By <A href="mailto:junshui@lanl.gov">Junshui Ma</A>, <A 
+href="mailto:zhaoy@ee.eng.ohio-state.edu">Yi Zhao</A>, and <A 
+href="http://eewww.eng.ohio-state.edu/~sca">Stanley Ahalt</A></FONT></B> 
+<P><B>What's new in version 3.00?</B> 
+<P>(1) The core part of this toolbox is now based on <A 
+href="http://www.csie.ntu.edu.tw/~cjlin/libsvm/">LIBSVM</A> version 2.33 <BR>(2) 
+It can be run on Windows, Linux (x86), Solaris, and HP-XP. <BR>(3) Two 
+data-preprocessing functions are added, <I>Normalize.m</I> and <I>Scale.m</I>. 
+<BR>
+<HR width="100%" SIZE=1>
+<BR><B>1. Why we are here?</B> 
+<P>Although there are quite a few versions of SVM codes in different languages, 
+including C, Fortran, Java, and Matlab, available on the web, we still found it 
+is necessary to develop a new Matlab SVM toolbox. Matlab is one of the most 
+popular research languages in the world. However, currently, the only Matlab SVM 
+toolbox available is too elementary to deal with any practical problem, which is 
+due to both its high memory requirement and slow computation speed. 
+<P>Compared with other available SVM packages, our OSU SVM toolbox has the 
+following major features: 
+<P>(1) SVM Classifier implemented as Matlab toolbox enables its users take full 
+advantage of the convenience of the Matlab platform. 
+<P>(2) By virtue of Matlab's mex mechanism, this toolbox implements SVM 
+classifiers in C++ using Chih-Chung Chang and <A 
+href="http://www.csie.ntu.edu.tw/~cjlin">Chih-Jen Lin</A>'s <A 
+href="http://www.csie.ntu.edu.tw/~cjlin/libsvm/">LIBSVM algorithm</A> (<A 
+href="http://www.csie.ntu.edu.tw/~cjlin/libsvm/copyright">COPYRIGHT_libsvm</A>). 
+Consequently, it is so fast that it is comparable to all the available C-coded 
+SVM packages in speed. Meanwhile, it inherits the memory-management mechanism of 
+LIBSVM, and is capable of dealing with practical classification problem with 
+huge training set. 
+<P>(3) It is self-contained. That is, it does not request any extra optimization 
+software packages to support it. 
+<P>(4) It implements not only the fundamental SVM classification algorithm, but 
+also two modified formulations, which are named <FONT 
+face=Symbol>n</FONT>-SVM&nbsp; and one-class SVM classifiers. 
+<P><B>2. Download</B> 
+<P><U>Current version:</U> <BR>&nbsp;&nbsp; You can download current version of 
+this toolbox, along with a demonstration tutorial, from <A 
+href="http://www.ece.osu.edu/~maj/osu_svm/osu_svm3.00.zip">here</A> (~850KB). 
+<P><U>Previous versions:</U> 
+<UL>
+  <LI>For OSU SVM Toolbox 2.00, you can download this toolbox, along with a 
+  demonstration tutorial, from <A 
+  href="http://www.ece.osu.edu/~maj/osu_svm/osu_svm200.zip">here</A> (~950KB). 
+  <LI>Mr. <A 
+  href="http://www4.csp.ntu.edu.sg:8000/~ejwlu/MyHomePage/LjwHome.htm">Lu 
+  Juwei</A> has successfully transplanted this a previous version (ver 1.10) of 
+  this OSU SVM Toolbox to a UNIX system (Unix System V Release 4.0 or later 
+  versions on SUN ULTRASPARC2 200MHZ). You can download this package from <A 
+  href="http://www.ece.osu.edu/~maj/osu_svm/osu_svm110_unix.tar.gz">here</A> 
+  (~397KB). 
+  <LI>Mr. <A href="http://ab.get.to/">Abdul Sayeed</A>&nbsp; has successfully 
+  transplanted this version (ver 2.00) of OSU SVM Toolbox to a UNIX system 
+  (SUN4U, OS Version 5.7, SPARC, SUNW Ultra-5_10). You can download the 
+  corresponding gunzipped mex files from <A 
+  href="http://www.ece.osu.edu/~maj/osu_svm/osu_svm200_unix.tar.gz">here</A> 
+  (~17KB). You need to replace those mex files in my package with these mex 
+  files if you want use this Toolbox in the similar system listed above. 
+</LI></UL>Hope you enjoy it. 
+<P><B>3. Install and Learn</B> 
+<P>After downloading the zipped file, you need to 
+<P>(1) Create a subdirectory in your Matlab's toolbox directory. (For example: 
+\Matlab\toolbox\osu_svm\) 
+<P>(2) Unzip the downloaded file into this subdirectory 
+<P>(3) Add this subdirectory into the search path of your Matlab by "addpath" 
+command, or by the "file-&gt;set path.." menu item, including the subdirectory 
+of Demo. 
+<P>(4) Run the command of "demos" from the Matlab command line to learn how to 
+use this toolbox. 
+<P><B>Acknowledgments</B>:&nbsp;<SPAN 
+style="FONT-SIZE: 10pt; FONT-FAMILY: 'Times New Roman'; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">This 
+work is supported by the Mission Research Cooperation under subcontract 
+SC-1406-98-0001.<SPAN style="mso-spacerun: yes"></SPAN>Additional support has 
+been provided by the ARL PET program funded by the HPCMO. Also, we appreciate 
+Dr. Chih-Jen Lin's patient help via email during our developing this 
+toolbox.</SPAN> <BR>&nbsp; <BR>&nbsp; </P></BODY></HTML>
