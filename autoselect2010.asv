@@ -40,7 +40,9 @@ for m = 1:class_number
             image_file = dir(fullfile('./','sample_*.bmp'));
             if(length(image_file) < model_image_number)
                 filelist = dir(fullfile('./','*.off'));
+                mkdir(num2str(iteration_number));
                 sample(filelist(1).name, 'off', iteration_number);
+               
                 close;
             end
             file_list = dir(fullfile('./','sample_*.bmp'));

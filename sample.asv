@@ -49,16 +49,13 @@ function sample(filename, format, iteration_number)
             end
             view([1,0,0]);
         else
-            model.vertices = [model.vertices(:,2),model.vertices(:,3),model.vertices(:,1)];
+            model.vertices = [model.vertices(:,2),model.vertices(:,3),model.vertices(:,2)];
             %view([0,0,1]);
             view([1,0,0]);
         end
     else
         if(max_y_difference <= max_z_difference)
-            model.vertices = [model.vertices(:,2),model.vertices(:,3),model.vertices(:,1)];
-            view([1,0,0]);
-
-            %view([0,1,0]);
+            view([0,1,0]);
         else
             view([0,0,1]);
         end            
