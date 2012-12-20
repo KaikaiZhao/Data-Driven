@@ -1,6 +1,6 @@
 function sample(filename, format, iteration_number)
     model = read(filename, format);
-    model.vertices = [model.vertices(:,1),model.vertices(:,3),model.vertices(:,2)];
+    %model.vertices = [model.vertices(:,1),model.vertices(:,3),model.vertices(:,2)];
     value = max(model.vertices);
     max_x = value(1);
     max_y = value(2);
@@ -39,30 +39,41 @@ function sample(filename, format, iteration_number)
     max_z_difference = max_z - min_z;
 
     
-    graph = patch('faces',model.faces, 'vertices',model.vertices);
-    set(graph,'FaceAlpha',1);
 
     if(max_x_difference <= max_y_difference)
         if(max_x_difference <= max_z_difference)
             if(max_y_difference > max_z_difference)
                 model.vertices = [model.vertices(:,1),model.vertices(:,3),model.vertices(:,2)];
             end
-            view([1,0,0]);
+            %view([1,0,0]);
         else
-            model.vertices = [model.vertices(:,2),model.vertices(:,3),model.vertices(:,1)];
+            model.vertices = [model.vertices(:,3),model.vertices(:,1),model.vertices(:,2)];
             %view([0,0,1]);
-            view([1,0,0]);
+            %view([1,0,0]);
         end
     else
         if(max_y_difference <= max_z_difference)
-            model.vertices = [model.vertices(:,2),model.vertices(:,3),model.vertices(:,1)];
-            view([1,0,0]);
-
+            if(max_x_difference <= max_z_difference)
+                model.vertices = [model.vertices(:,2),model.vertices(:,1),model.vertices(:,3)];
+                %view([1,0,0]);
+            else
+                model.vertices = [model.vertices(:,2),model.vertices(:,3),model.vertices(:,1)];
+                %view([1,0,0]);
+                a = 1
+            end
             %view([0,1,0]);
         else
-            view([0,0,1]);
+            model.vertices = [model.vertices(:,3),model.vertices(:,2),model.vertices(:,1)];
+            %view([1,0,0]);    
+            %view([0,0,1]);
         end            
     end
+    
+    graph = patch('faces',model.faces, 'vertices',model.vertices);
+    set(graph,'FaceAlpha',1);
+    view([1,0,0]);
+    
+    
     set(gca,'LooseInset',get(gca,'TightInset'))
     axis off;
     axis tight;
