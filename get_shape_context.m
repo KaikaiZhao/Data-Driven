@@ -7,7 +7,6 @@ end
 %[Idx,C]=kmeans(data,10);
 [Idx,C]=kmeans(data,5,'emptyaction','singleton');
 
-
 nsamp=64;
 
 % max(1) = mode(Idx);
@@ -42,13 +41,17 @@ for m1 = 1:5
         %X{m} = {};
     end
      [label, energy, index] = kmedoids(distance_matrix,2);
+     index = 1;
      for m = 1:5
         result = current_file_lsit(label == m,:);
-        figure;
+        %figure;
         for n = 1:length(result)
-            subplot(length(result),1,n);
-            I=imread(result(n).name(length('feature_')+1:end-4));
-            imshow(I);
+            %subplot(length(result),1,n);
+            %I=imread(result(n).name(length('feature_')+1:end-4));
+            %imshow(I);
+             copyfile(result(n).name(length('feature_')+1:end-4),[num2str(index),'chosed',file_list(iCluster).name(1:end-4)]);
+             copyfile(result(n).name(length('feature_')+1:end-4),[num2str(index),'chosed',file_list(iCluster).name]);
+             index = index +1;
         end
     end
 end
@@ -59,44 +62,44 @@ end
 
 
 
-
-for m = 1:10
-    result = file_list(Idx == m,:);
-    figure;
-    for n = 1:size(result,1)
-        subplot(size(result,1),1,n);
-        I=imread(result(n).name(length('feature_')+1:end-4));
-        imshow(I);
-    end
+% 
+% for m = 1:10
+%     result = file_list(Idx == m,:);
+%     figure;
 %     for n = 1:size(result,1)
-%         subplot(size(result,1),2,size(result,1)+n);
-%         I=imread(['ifrdescp_',result(n).name(length('feature_fourier_descriptor_')+1:end-4)]);
+%         subplot(size(result,1),1,n);
+%         I=imread(result(n).name(length('feature_')+1:end-4));
 %         imshow(I);
 %     end
-    
-end
-
-
-
-
-
-%# loop through all clusters
-for iCluster = 1:max(Idx)
-    %# find the points that are part of the current cluster
-    currentPointIdx = find(Idx==iCluster);
-    %# find the index (among points in the cluster)
-    %# of the point that has the smallest Euclidean distance from the centroid
-    %# bsxfun subtracts coordinates, then you sum the squares of
-    %# the distance vectors, then you take the minimum
-    [~,minIdx] = min(sum(bsxfun(@minus,data(currentPointIdx,:),C(iCluster,:)).^2,2));
-    %# store the index into X (among all the points)
-    closestIdx(iCluster) = currentPointIdx(minIdx);
-end
-
-for iCluster = 1:max(Idx)
-    copyfile(file_list(iCluster).name(9:end-4),[num2str(iCluster),'chosed',file_list(iCluster).name(1:end-4)]);
-    copyfile(file_list(iCluster).name,[num2str(iCluster),'chosed',file_list(iCluster).name]);
-end
+% %     for n = 1:size(result,1)
+% %         subplot(size(result,1),2,size(result,1)+n);
+% %         I=imread(['ifrdescp_',result(n).name(length('feature_fourier_descriptor_')+1:end-4)]);
+% %         imshow(I);
+% %     end
+%     
+% end
+% 
+% 
+% 
+% 
+% 
+% %# loop through all clusters
+% for iCluster = 1:max(Idx)
+%     %# find the points that are part of the current cluster
+%     currentPointIdx = find(Idx==iCluster);
+%     %# find the index (among points in the cluster)
+%     %# of the point that has the smallest Euclidean distance from the centroid
+%     %# bsxfun subtracts coordinates, then you sum the squares of
+%     %# the distance vectors, then you take the minimum
+%     [~,minIdx] = min(sum(bsxfun(@minus,data(currentPointIdx,:),C(iCluster,:)).^2,2));
+%     %# store the index into X (among all the points)
+%     closestIdx(iCluster) = currentPointIdx(minIdx);
+% end
+% 
+% for iCluster = 1:max(Idx)
+%     copyfile(file_list(iCluster).name(9:end-4),[num2str(iCluster),'chosed',file_list(iCluster).name(1:end-4)]);
+%     copyfile(file_list(iCluster).name,[num2str(iCluster),'chosed',file_list(iCluster).name]);
+% end
 
 
 

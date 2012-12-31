@@ -40,7 +40,9 @@ for m = 1:class_number
             image_file = dir(fullfile('./','sample_*.bmp'));
             if(length(image_file) < model_image_number)
                 filelist = dir(fullfile('./','*.off'));
+                mkdir(num2str(iteration_number));
                 sample(filelist(1).name, 'off', iteration_number);
+               
                 close;
             end
             file_list = dir(fullfile('./','sample_*.bmp'));
@@ -56,15 +58,15 @@ for m = 1:class_number
             end
             [Idx,C]=kmeans(data,10,'emptyaction','singleton');
 
-%             for k = 1:10
-%                 result = file_list(Idx == k,:);
-%                 figure;
-%                 for l = 1:size(result,1)
-%                     subplot(size(result,1),1,l);
-%                     I=imread(result(l).name(9:end-4));
-%                     %imshow(I);
-%                 end
-%             end
+            for k = 1:10
+                result = file_list(Idx == k,:);
+                figure;
+                for l = 1:size(result,1)
+                    subplot(size(result,1),1,l);
+                    I=imread(result(l).name(9:end-4));
+                    %imshow(I);
+                end
+            end
 
             %# loop through all clusters
             for iCluster = 1:max(Idx)

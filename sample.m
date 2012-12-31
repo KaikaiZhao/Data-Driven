@@ -59,7 +59,6 @@ function sample(filename, format, iteration_number)
             else
                 model.vertices = [model.vertices(:,2),model.vertices(:,3),model.vertices(:,1)];
                 %view([1,0,0]);
-                a = 1
             end
             %view([0,1,0]);
         else
@@ -71,8 +70,7 @@ function sample(filename, format, iteration_number)
     
     graph = patch('faces',model.faces, 'vertices',model.vertices);
     set(graph,'FaceAlpha',1);
-    view([1,0,0]);
-    
+    view([1,0,1]);
     
     set(gca,'LooseInset',get(gca,'TightInset'))
     axis off;

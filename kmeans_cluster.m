@@ -1,8 +1,9 @@
 file_list = dir(fullfile('./','*.csv'));
-data = zeros(length(file_list),70);
+data = zeros(length(file_list),45);
+%delete ('*chosed*');
 for m = 1:length(file_list)
     tempdata =  csvread(file_list(m).name);
-    data(m,:) = tempdata;
+    data(m,:) = tempdata(1:45);
 end
 %[Idx,C]=kmeans(data,10);
 [Idx,C]=kmeans(data,10,'emptyaction','singleton');
@@ -94,8 +95,8 @@ for iCluster = 1:max(Idx)
 end
 
 for iCluster = 1:max(Idx)
-    copyfile(file_list(iCluster).name(9:end-4),[num2str(iCluster),'chosed',file_list(iCluster).name(1:end-4)]);
-    copyfile(file_list(iCluster).name,[num2str(iCluster),'chosed',file_list(iCluster).name]);
+    copyfile(file_list(closestIdx(iCluster)).name(length('feature_fourier_descriptor_') + 1:end-4),[num2str(iCluster),'chosed',file_list(closestIdx(iCluster)).name(1:end-4)]);
+    copyfile(file_list(closestIdx(iCluster)).name,[num2str(iCluster),'chosed',file_list(closestIdx(iCluster)).name]);
 end
 
 
